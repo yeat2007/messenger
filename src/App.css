@@ -33,8 +33,6 @@ body{
   /* opacity: 0.7; */
 }
 
-
-
 /* search + navigate_+ buttons___________________*/
 
 .mainBlock{
@@ -48,11 +46,13 @@ body{
   background-color: #D1D1D1;
   border-radius: 5px;
   margin: 10px;
+  overflow: hidden;
 }
 
 
 .messageTitle{
   display: flex;
+  height: 44px;
   margin-top: 30px;
   padding: 10px;
 }
@@ -61,6 +61,7 @@ body{
 .search {
   display: flex;
   align-items:normal;
+  height: 41px;
 }
 
 #searchinput{
@@ -100,6 +101,7 @@ body{
 .buttons{
   display: flex;
   width: 100%;
+  height: 57px;
   /* flex-direction: row; */
   justify-content: space-between;
   padding: 10px;
@@ -124,6 +126,7 @@ body{
 
 .btnsContainer{   
   width: 100%;
+  height: 95px;
   display: flex;
   background-color: #c0c6c7;
 
@@ -132,7 +135,7 @@ body{
   display: flex;
   justify-content: space-between;
   width: 100%;
-  padding: 25px;
+  padding: 18px;
 }
 
 .btns img{
@@ -161,11 +164,13 @@ body{
 .chatContainer{
   display: flex;
   flex-direction: column;
-  height: 68%;
+  height:calc(100% - 314px);
+  overflow-y: scroll;
+  scrollbar-width: none;
 }
 .chatList{
   width: 100%;
-  border: 1px solidD;
+  border: 1px;
   border-radius:5px;
 }
 
@@ -290,7 +295,7 @@ body{
   border: none;
   cursor: pointer;
   padding: 8px 16px;
-  background: #4BC8D2;
+background: #4BC8D2;
 }
 
 
@@ -306,6 +311,7 @@ body{
   overflow-y: scroll;
   overflow-x: hidden;
   scrollbar-width: none;
+  word-wrap: break-word;
 }
 
 .message{
@@ -343,7 +349,8 @@ body{
 #timeDisplay{
   position: relative;
   top: 10px;
-  left: 10px;
+  height: 47px;
+  text-align: center;
   z-index: 9999;
   font-size: 20px;
   padding: 10px;
