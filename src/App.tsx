@@ -1,6 +1,6 @@
 import { useState , useEffect} from 'react';
 import './App.css'
-
+import { useMessageStore } from './store/messageStore';
 
 
 type UsersProps = {
@@ -42,80 +42,6 @@ const contacts: UsersProps[] = [
     messageTime: "20:12",
     lastMessage: "!!!!!",
   },
-
-
-  {
-    userName: "IO",
-    userMessage: "wtf",
-    userAvatar: "https://placehold.co/50x50",
-    userOnline: true,
-    messageTime: "23:12",
-    lastMessage: "qrty",
-  },
-  {
-    userName: "IO",
-    userMessage: "wtf",
-    userAvatar: "https://placehold.co/50x50",
-    userOnline: true,
-    messageTime: "23:12",
-    lastMessage: "qrty",
-  },
-  {
-    userName: "IO",
-    userMessage: "wtf",
-    userAvatar: "https://placehold.co/50x50",
-    userOnline: true,
-    messageTime: "23:12",
-    lastMessage: "qrty",
-  },
-  {
-    userName: "IO",
-    userMessage: "wtf",
-    userAvatar: "https://placehold.co/50x50",
-    userOnline: true,
-    messageTime: "23:12",
-    lastMessage: "qrty",
-  },
-  {
-    userName: "IO",
-    userMessage: "wtf",
-    userAvatar: "https://placehold.co/50x50",
-    userOnline: true,
-    messageTime: "23:12",
-    lastMessage: "qrty",
-  },
-  {
-    userName: "IO",
-    userMessage: "wtf",
-    userAvatar: "https://placehold.co/50x50",
-    userOnline: true,
-    messageTime: "23:12",
-    lastMessage: "qrty",
-  },
-  {
-    userName: "IO",
-    userMessage: "wtf",
-    userAvatar: "https://placehold.co/50x50",
-    userOnline: true,
-    messageTime: "23:12",
-    lastMessage: "qrty",
-  },
-  {
-    userName: "IO",
-    userMessage: "wtf",
-    userAvatar: "https://placehold.co/50x50",
-    userOnline: true,
-    messageTime: "23:12",
-    lastMessage: "qrty",
-  },
-  {
-    userName: "IO",
-    userMessage: "wtf",
-    userAvatar: "https://placehold.co/50x50",
-    userOnline: true,
-    messageTime: "23:12",
-    lastMessage: "qrty",
-  },
 ]
 
 const ChatItem = ({userName, userMessage, userAvatar, messageTime }: UsersProps) => {
@@ -142,7 +68,7 @@ type MessageProps = {
 }
 
 const Message = ({text, sent}: MessageProps) => {
-  return ( 
+  return (
     <div className={`message ${sent ? "sent" : ""}`}>
       {text}
     </div>
@@ -152,16 +78,12 @@ const Message = ({text, sent}: MessageProps) => {
 
 
 function App() {
-  const [messages, setMessages] = useState<MessageProps[]>([
-    {text: "privet", sent: false},
-    {text: "watsUP", sent: true},
-    {text: "ninja ", sent: false},
-  ]);
-
-  const [newMessage, setNewMessage] = useState("");
+  const messages = useMessageStore((state) => state.messages);
+  const addMesage = useMessageStore((state) =>state.addMessage);
+  const [newMessage, setNewMessage ] = useState("")
   const sendMessage = () => {
-    if(newMessage.trim()){
-      setMessages([...messages, {text: newMessage, sent: true }]);
+    if(newMessage.trim()) {
+      addMesage(newMessage, true)
       setNewMessage("");
     }
   };
@@ -239,7 +161,8 @@ function App() {
               className="typing"
               placeholder="Type a message ..."
               value={newMessage}
-              onChange={(e) => setNewMessage(e.target.value)}/>
+              onChange={(e) => setNewMessage(e.target.value)}
+              onKeyDown={(e) => e.key === 'Enter' && sendMessage()}/>
             <button className="sendMess" onClick={sendMessage}>
               Send
             </button>
