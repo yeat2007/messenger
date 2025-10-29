@@ -44,9 +44,9 @@ const contacts: UsersProps[] = [
   },
 ]
 
-const ChatItem = ({userName, userMessage, userAvatar, messageTime }: UsersProps) => {
+const ChatItem = ({userName, userMessage, userAvatar, messageTime, onSelect }: UsersProps & { onSelect: () => void }) => {
   return (
-    <div className="chatList">
+    <div className="chatList" onClick = {onSelect}>
       <div className="chatItem">
         <img src = {userAvatar} className='avatar'></img>
         <div className="userInfo">
@@ -88,6 +88,8 @@ function App() {
     }
   };
 
+    const [selectedChat, setSelectedChat] = useState<UsersProps | null>(null);
+
   const [time, setTime] = useState<string>('');
   
   useEffect(() => {
@@ -124,7 +126,7 @@ function App() {
 
         <div className="chatContainer">
           {contacts.map((contact, i) => (
-            <ChatItem key={i} {...contact}/>
+            <ChatItem key={i} {...contact} onSelect = {() => setSelectedChat(contact)}/>
           ))}
         </div>
         <div className="btnsContainer">
@@ -148,6 +150,14 @@ function App() {
       <div className="cardsContainer">
         <div className="mainCard">
           <div className="chatWithUser">
+            <div className="topbar">
+              <div className="left">
+                <img src={selectedChat?.userAvatar} className="avatarSmall" />
+              </div>
+              <div className="center">
+                <strong>{selectedChat?.userName || "select chat"}</strong>
+              </div>
+            </div>
             <div className="messages">
               {messages.map ((m, i) => (
                 <Message key = {i} text = {m.text} sent = {m.sent}/>
@@ -162,7 +172,10 @@ function App() {
               placeholder="Type a message ..."
               value={newMessage}
               onChange={(e) => setNewMessage(e.target.value)}
-              onKeyDown={(e) => e.key === 'Enter' && sendMessage()}/>
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                  e.preventDefault();
+                  sendMessage();}}}/>
             <button className="sendMess" onClick={sendMessage}>
               Send
             </button>

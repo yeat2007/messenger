@@ -53,7 +53,7 @@ body{
 .messageTitle{
   display: flex;
   height: 44px;
-  margin-top: 30px;
+  /* margin-top: 30px; */
   padding: 10px;
 }
 
@@ -164,7 +164,7 @@ body{
 .chatContainer{
   display: flex;
   flex-direction: column;
-  height:calc(100% - 314px);
+  height: calc(100% - 280px);
   overflow-y: scroll;
   scrollbar-width: none;
 }
@@ -223,6 +223,14 @@ body{
 
 
 /* send message + chat */
+
+
+.avatarSmall {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
 
 .topbar{
   display: flex;
@@ -298,6 +306,45 @@ body{
 background: #4BC8D2;
 }
 
+.message{
+  max-width: 60%;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: #aac3c7;
+  align-self: flex-start;
+  color: #111; 
+  line-height: 1.4;       
+  position: relative;
+  word-break: break-word;
+}
+
+
+.message.sent{
+  background: #adb3b4;
+  align-self: flex-end;
+}
+
+.message::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: -8px;
+  width: 0;
+  height: 0;
+  border: 8px solid transparent;
+  border-top-color: #e4e6eb;
+  border-bottom: 0;
+  border-left: 0;
+  margin-bottom: -1px;
+}
+
+.message.sent::after {
+  left: auto;
+  right: -8px;
+  border-top-color: #4BC8D2;
+  border-right: 0;
+}
+
 
 
 .messages{
@@ -314,20 +361,10 @@ background: #4BC8D2;
   word-wrap: break-word;
 }
 
-.message{
-  max-width: 60%;
-  padding: 8px 12px;
-  border-radius: 10px;
-  background: #aac3c7;
-  align-self: flex-start;
-}
 
 
-.message.sent{
-  background: #adb3b4;
-  align-self: flex-end;
 
-}
+
 
 .gradientCircle {
   background: #4BC8D2;
