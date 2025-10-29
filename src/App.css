@@ -273,8 +273,9 @@ body{
 
 .chatWithUser{
   display: flex;
+  flex-direction: column;
   width: 100%;
-  height: 88%;
+  height: 100%;
 }
 
 
@@ -324,28 +325,6 @@ background: #4BC8D2;
   align-self: flex-end;
 }
 
-.message::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: -8px;
-  width: 0;
-  height: 0;
-  border: 8px solid transparent;
-  border-top-color: #e4e6eb;
-  border-bottom: 0;
-  border-left: 0;
-  margin-bottom: -1px;
-}
-
-.message.sent::after {
-  left: auto;
-  right: -8px;
-  border-top-color: #4BC8D2;
-  border-right: 0;
-}
-
-
 
 .messages{
   display: flex;
@@ -355,7 +334,8 @@ background: #4BC8D2;
   overflow-y: auto;
   flex: 1;
   position: relative;
-  overflow-y: scroll;
+  z-index: 1;
+  /* overflow-y: scroll; */
   overflow-x: hidden;
   scrollbar-width: none;
   word-wrap: break-word;
@@ -374,6 +354,7 @@ background: #4BC8D2;
   width: 60vh;
   border-radius: 10000px;
   position: absolute;
+  z-index: 0;
   left: -200px;
 }
 
