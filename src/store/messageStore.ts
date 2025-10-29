@@ -5,20 +5,27 @@ import { create } from 'zustand';
 type Message = {
     text: string;
     sent: boolean;
+    time: Date;
 }
 
 type MessageStore = {
-    messages: Message[];
-    addMessage: (text: string, sent?: boolean) => void;
+    messages: Record<string, Message[]>;
+    addMessage: (userName: string, text: string, sent?: boolean) => void;
 }
 export const useMessageStore = create<MessageStore>((set) => ({
-    messages: [
-        {text: "privet", sent: false},
-        {text  : "watsUP", sent: true},
-        {text: "ninja", sent: false},
-    ],
-    addMessage:(text, sent = true ) =>
-        set((state) => ({ 
-            messages: [...state.messages, {text, sent}] 
-        })), 
+    messages: {
+        "Vasya": [{text: "privet", sent: false, time:new Date("2025-10-29T10:23")}],
+        "Werty": [{text  : "watsUP", sent: true, time:new Date("2025-10-29T10:23")}],
+},
+    addMessage: (userName, text, sent = true) => 
+    set((state) => ({
+        messages: {
+            ...state.messages,
+            [userName]: [
+                ...(state.messages[userName] || []),
+                { text, sent, time: new Date() }
+            ]
+        }
+    }))
 }));
+

@@ -78,17 +78,21 @@ const Message = ({text, sent}: MessageProps) => {
 
 
 function App() {
-  const messages = useMessageStore((state) => state.messages);
-  const addMesage = useMessageStore((state) =>state.addMessage);
+  const [selectedChat, setSelectedChat] = useState<UsersProps | null>(null);
+
+
+  const messages = useMessageStore(state => 
+    selectedChat ? state.messages[selectedChat.userName] || [] : []);
+  const addMessage = useMessageStore((state) =>state.addMessage);
   const [newMessage, setNewMessage ] = useState("")
   const sendMessage = () => {
+    if (!selectedChat) return
     if(newMessage.trim()) {
-      addMesage(newMessage, true)
+      addMessage(selectedChat.userName, newMessage, true)
       setNewMessage("");
     }
   };
 
-    const [selectedChat, setSelectedChat] = useState<UsersProps | null>(null);
 
   const [time, setTime] = useState<string>('');
   
