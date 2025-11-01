@@ -14,8 +14,8 @@ type MessageStore = {
 }
 export const useMessageStore = create<MessageStore>((set) => ({
     messages: {
-        "Vasya": [{text: "privet", sent: false, time:new Date("2025-10-29T10:23")}],
-        "Werty": [{text  : "watsUP", sent: true, time:new Date("2025-10-29T10:23")}],
+        "Vasya": [{text: "privet", sent: false, time: new Date("2025-10-29T10:23")}],
+        "Werty": [{text  : "watsUP", sent: true, time: new Date("2025-10-29T10:23")}],
 },
     addMessage: (userName, text, sent = true) => 
     set((state) => ({
