@@ -107,8 +107,7 @@ function App() {
               className="typing"
               placeholder="Type a message ..."
               value={newMessage}
-              onChange={(e) => setNewMessage(e.target.value)}/>\
-
+              onChange={(e) => setNewMessage(e.target.value)}/>
             <button className="sendMess" 
               onClick={() =>{
                 if(newMessage.trim()) {
