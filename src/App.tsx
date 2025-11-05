@@ -21,63 +21,11 @@ const ChatItem = ({userName, userAvatar, userOnline, messageTime, userMessage }:
             <span className="userName">{userName}</span>
             <span className="chatTime">{messageTime}</span>
           </div>
-          {/* <div className="chatMessage">{userMessage}</div> */}
         </div>
       </div>
     </div>
   );
 }
-
-
-// type UsersProps = {
-//   userName: string,
-//   userMessage: string,
-//   userAvatar?: string,
-//   userOnline: boolean,
-//   messageTime?: string,
-//   lastMessage?: string,
-// };
-
-
-// const contacts: UsersProps[] = [
-//   {
-//     userName: "Vasya",
-//     userMessage: "hello world('print')",
-//     userAvatar: "https://placehold.co/50x50",
-//     userOnline: true,
-//     messageTime: "10:12",
-//     lastMessage: "qwerty",
-//   },
-
-  
-//   {
-//     userName: "Werty",
-//     userMessage: "bye",
-//     userAvatar: "https://placehold.co/50x50",
-//     userOnline: true,
-//     messageTime: "12:12",
-//     lastMessage: "",
-//   },
-
-
-//   {
-//     userName: "GHJ",
-//     userMessage: "ninja, aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-//     userAvatar: "https://placehold.co/50x50",
-//     userOnline: true,
-//     messageTime: "20:12",
-//     lastMessage: "!!!!!",
-//   },
-// ]
-
-
-
-
-// type MessageProps = {
-//   text: string;
-//   sent: boolean;
-// }
-
 
 
 
@@ -94,22 +42,6 @@ function App() {
         const timer = setInterval(updateTime, 1000);
         return () => { clearInterval(timer)};
 } ,[]);
-
-  // const allMessages = useMessageStore(state => state.messages);
-  // const addMessage = useMessageStore(state => state.addMessage);
-
-  // const messages = selectedChat ? allMessages[selectedChat.userName] || [] : []; 
-  // const sendMessage = () => {
-  //   if (!selectedChat || !newMessage.trim()) return;
-  //   addMessage(selectedChat.userName, newMessage, true);
-  //   setNewMessage("");
-  // };
-
-
-
-  // const [time, setTime] = useState<string>('');
-  
- 
 
   return(
     <div className="mainBlock">
