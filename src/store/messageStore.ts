@@ -70,7 +70,7 @@ export const useMessageStore = create<MessageStore>((set, get) => ({
         const userMessages = messages[userName] || [];
         const updatedMessages = {
             ...messages, 
-            [userName]: [...userMessages, {text, sent: true }],
+            [userName]: [...userMessages, {text, sent}],
         };
         set({ messages: updatedMessages });
     },
