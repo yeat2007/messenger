@@ -153,6 +153,8 @@ body{
   border: none;
   background: #cfcfcf;
   font-style: normal;
+  text-decoration: none;
+  color: inherit;
 }
 .bottomBtn:hover{
   background: #A1AFB1;
