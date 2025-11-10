@@ -1,0 +1,97 @@
+.cardsContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: #A1AFB1;
+  scrollbar-width: none;
+  gap: 10px;
+  padding: 10px;
+  align-content: flex-start;
+  justify-content: center;
+  width: calc(100vw - 370px);
+}
+
+.mainCard {
+  display: flex;
+  height: 100vh;
+  border-radius: 5px;
+  width: 100%;
+  flex-direction: column;
+  background-color: #D1D1D1;
+}
+
+.chatWithUser {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 60px;
+  background-color: #c0c6c7;
+  padding: 10px 20px;
+}
+
+.center {
+  flex: 1;
+  text-align: left;
+}
+
+.messages {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  overflow-y: auto;
+  flex: 1;
+  position: relative;
+  z-index: 1;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  word-wrap: break-word;
+}
+
+.gradientCircle {
+  background: #4BC8D2;
+  background: radial-gradient(circle, rgba(75, 200, 210, 0.87) 0%, #aac3c700 72%);
+  top: 10%;
+  height: 60vh;
+  width: 60vh;
+  border-radius: 10000px;
+  position: absolute;
+  z-index: 0;
+  left: -200px;
+}
+
+.messageType {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  background:  #D1D1D1;
+}
+
+.typing {
+  flex: 1;
+  resize: none;
+  border: none;
+  background:#bbbfc0;
+  border-radius: 7px;
+  scrollbar-width: none;
+  height: 140%;
+}
+
+.sendMess {
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  padding: 8px 16px;
+  background: #4BC8D2;
+}
+
+
