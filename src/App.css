@@ -385,6 +385,34 @@ body{
 
 
 
+
+.sorryBlock{
+  display: flex;
+  width: 100vw;
+  background: #242424;
+  height:100vh;
+}
+
+
+.sorryText{
+  color: #D1D1D1;
+  text-align: center;
+}
+
+.skull{
+  text-align: center ;
+}
+
+
+
+
+
+
+
+
+
+
+
 /* #root {
   max-width: 1280px;
   margin: 0 auto;
